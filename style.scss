@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap");
+@mixin p_small {
+  font-size: 0.5rem;
+  line-height: 15px;
+  font-weight: 200;
+}
+
+@mixin p_medium {
+  font-size: 1rem;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+@mixin p_large {
+  font-size: 1.5rem;
+  line-height: 25px;
+  font-weight: 400;
+}
+
+@mixin p_default {
+  font-size: 1.7rem;
+  line-height: 25px;
+  font-weight: 400px;
+}
+@mixin h_small {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+@mixin h_medium {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+@mixin h_large {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+@mixin h_default {
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+
+@mixin desktop {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 780px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 400px) {
+    @content;
+  }
+}
+
+@mixin divNormal($c: red, $w: 400px, $h: 300px) {
+  color: $c;
+  width: $w;
+  height: $h;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.header {
+  @include h_default;
+  @include desktop {
+    @include h_large;
+  }
+  @include tablet {
+    @include h_medium;
+  }
+  @include mobile {
+    @include h_small;
+  }
+}
+
+.paragraph {
+  @include p_default;
+  @include desktop {
+    @include p_large;
+  }
+  @include tablet() {
+    @include p_medium;
+  }
+  @include mobile {
+    @include p_small;
+  }
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.item {
+  padding: 5px 10px;
+  border: 2px solid gray;
+}
+
+.div1 {
+  @include divNormal(orange, 600px, 250px);
+}
+
+.div2 {
+  @include divNormal;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: darkseagreen;
+  padding: 15px 55px;
+  text-decoration: none;
+  color: black;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background-color: rgb(169, 199, 169);
+  border: 1px solid black;
+}
